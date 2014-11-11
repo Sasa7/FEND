@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Local Storage Example</title>
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+            if (typeof (Storage) !== "undefined") {
+                var list = $("#ToDoList");
+
+                list.blur(function () {
+                    localStorage.setItem("ToDoData", this.innerHTML);
+                });
+
+                if (localStorage.getItem("ToDoData"))
+                    list.html(localStorage.getItem("ToDoData"));
+            } else {
+                alert("Sorry! No Web Storage support..");
+            }
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <ul id="ToDoList" contenteditable="true">
+            <li>Enter ToDo Item...</li>
+        </ul>
+    </div>
+</body>
+</html>
